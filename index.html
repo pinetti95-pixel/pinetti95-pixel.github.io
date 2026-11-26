@@ -417,6 +417,22 @@ main section[id]{scroll-snap-stop:normal}
 @media(max-width:740px){html{scroll-snap-type:none}.hero .rotating-role{font-size:clamp(1.65rem,5.9vw,2.5rem);margin-top:16px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;scroll-snap-type:none}.rotating-role .role-changing{will-change:auto}}
 @media print{html{scroll-snap-type:none}.rotating-role .role-changing{color:#000}}
+
+/* Mobile page-by-page navigation — native scrolling, including tall sections. */
+@media screen and (max-width:999px){
+ :root{--mobile-header-height:64px;--panel-gap:0px}
+ html{scroll-padding-top:var(--mobile-header-height)}
+ main section[id]{min-height:calc(100svh - var(--mobile-header-height))}
+}
+@media screen and (max-width:999px) and (prefers-reduced-motion:no-preference){
+ html{scroll-snap-type:y mandatory;scroll-behavior:smooth}
+ main section[id]{scroll-snap-align:start;scroll-snap-stop:always}
+ .footer{scroll-snap-align:end}
+ html.mobile-menu-open{scroll-snap-type:none}
+}
+@media screen and (max-width:999px) and (prefers-reduced-motion:reduce){
+ html{scroll-snap-type:none;scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
@@ -458,6 +474,21 @@ main section[id]{scroll-snap-stop:normal}
 (function(){
 document.documentElement.classList.add('js');
 const menu=document.getElementById('menu-toggle'),nav=document.getElementById('site-nav');
+
+const mobileHeader=document.querySelector('.top');
+const mobileViewport=window.matchMedia('(max-width:999px)');
+function syncMobileSnap(){
+ const opened=nav.classList.contains('open');
+ document.documentElement.classList.toggle('mobile-menu-open',mobileViewport.matches&&opened);
+ if(mobileViewport.matches&&!opened&&mobileHeader){
+  document.documentElement.style.setProperty('--mobile-header-height',Math.ceil(mobileHeader.getBoundingClientRect().height)+'px');
+ }
+}
+syncMobileSnap();
+window.addEventListener('resize',syncMobileSnap,{passive:true});
+if('ResizeObserver' in window&&mobileHeader)new ResizeObserver(syncMobileSnap).observe(mobileHeader);
+if('MutationObserver' in window)new MutationObserver(syncMobileSnap).observe(nav,{attributes:true,attributeFilter:['class']});
+
 function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
