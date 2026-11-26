@@ -1,0 +1,301 @@
+/* Each year occupies one of fourteen equal columns, January 2013 to January 2027. */
+.education-chart {
+  --edu-label: minmax(210px, 1fr);
+  --edu-plot: minmax(0, 1.65fr);
+  --edu-gap: clamp(16px, 2.6vw, 32px);
+  margin: 18px 0 38px;
+  padding: clamp(16px, 2.8vw, 34px);
+  background: #fff;
+  border: 1px solid #e2e3e2;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgb(31 45 52 / 4.5%);
+}
+
+.education-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 18px;
+  margin-bottom: 26px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e9ebea;
+  font-size: .76rem;
+  line-height: 1.4;
+}
+
+.education-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.education-legend i {
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border-radius: 3px;
+}
+
+.doctorate {
+  background: #4268a5;
+}
+
+.masters {
+  background: #218d80;
+}
+
+.bachelor {
+  background: #d28a37;
+}
+
+.mobility {
+  background: #9471b9;
+}
+
+.education-axis, .education-row {
+  display: grid;
+  grid-template-columns: var(--edu-label) var(--edu-plot);
+  align-items: center;
+  gap: var(--edu-gap);
+}
+
+.education-axis {
+  padding-bottom: 10px;
+}
+
+.education-years {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+  min-width: 0;
+}
+
+.education-years > span {
+  text-align: center;
+  white-space: nowrap;
+  color: #333;
+  font-size: clamp(.56rem, .85vw, .73rem);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.year-short, .education-years-mobile, .education-short-title, .education-short-org {
+  display: none;
+}
+
+.education-row {
+  padding: 13px 0;
+  border-top: 1px solid #eceeec;
+}
+
+.education-row:last-child {
+  padding-bottom: 3px;
+}
+
+.education-label h3 {
+  margin: 4px 0 5px;
+  font-size: 1rem;
+  line-height: 1.3;
+  letter-spacing: -.01em;
+}
+
+.education-label p {
+  margin: 0;
+  font-size: .78rem;
+  line-height: 1.45;
+}
+
+.education-period {
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .015em;
+  font-variant-numeric: tabular-nums;
+}
+
+.education-track {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: 39px;
+  overflow: hidden;
+  border-right: 1px solid #e4e8e8;
+  border-radius: 7px;
+  background: #f6f7f7 linear-gradient(to right, #dfe4e5 1px, transparent 1px) 0 0 / calc(100% / 14) 100%;
+}
+
+.education-bar {
+  position: absolute;
+  top: 50%;
+  left: var(--bar-start);
+  width: var(--bar-width);
+  height: 24px;
+  transform: translateY(-50%);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgb(20 35 45 / 10%);
+}
+
+/* Positions from the original CV dates, shared by desktop, mobile and print. */
+[data-course="doctorate"] {
+  --bar-start: 77.3777%;
+  --bar-width: 21.4090%;
+}
+
+[data-course="visiting"] {
+  --bar-start: 92.8376%;
+  --bar-width: 2.9550%;
+}
+
+[data-course="pedagogical-sciences"] {
+  --bar-start: 63.6595%;
+  --bar-width: 14.2857%;
+}
+
+[data-course="digital-education"] {
+  --bar-start: 56.5183%;
+  --bar-width: 14.2840%;
+}
+
+[data-course="erasmus"] {
+  --bar-start: 40.4501%;
+  --bar-width: 2.3875%;
+}
+
+[data-course="primary-education"] {
+  --bar-start: 6.5166%;
+  --bar-width: 42.8571%;
+}
+
+.mobility-highlight {
+  height: 28px;
+  z-index: 1;
+  background: #7853aa;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #7853aa;
+}
+
+.mobility-highlight::before {
+  content: "";
+  position: absolute;
+  inset: -2px -5px;
+  z-index: -1;
+  border-radius: 7px;
+  background: rgb(148 113 185 / 18%);
+}
+
+@media (max-width: 1100px) {
+  .year-full {
+    display: none;
+  }
+  .year-short {
+    display: inline;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .education-chart {
+    --edu-label: minmax(0, 43fr);
+    --edu-plot: minmax(0, 57fr);
+    --edu-gap: 8px;
+    padding: 12px 9px;
+    margin: 12px 0 26px;
+    border-radius: 10px;
+    box-shadow: none;
+  }
+  .education-legend {
+    gap: 6px 11px;
+    margin-bottom: 10px;
+    padding-bottom: 9px;
+    font-size: .75rem;
+  }
+  .education-legend > span {
+    gap: 4px;
+  }
+  .education-legend i {
+    width: 8px;
+    height: 8px;
+  }
+  .education-axis {
+    padding-bottom: 5px;
+  }
+  .education-years, .education-full-title, .education-full-org {
+    display: none;
+  }
+  .education-years-mobile {
+    display: grid;
+    grid-template-columns: repeat(14, minmax(0, 1fr));
+    align-items: baseline;
+    font-size: .75rem;
+    font-weight: 650;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+  }
+  .education-years-mobile > :first-child {
+    grid-column: 1;
+    justify-self: start;
+  }
+  .education-years-mobile > :nth-child(2) {
+    grid-column: 8;
+    justify-self: center;
+  }
+  .education-years-mobile > :last-child {
+    grid-column: 14;
+    justify-self: end;
+  }
+  .education-row {
+    min-height: 58px;
+    padding: 8px 0;
+  }
+  .education-short-title, .education-short-org {
+    display: block;
+  }
+  .education-label .education-short-title {
+    margin: 3px 0;
+    font-size: .84rem;
+    line-height: 1.2;
+    letter-spacing: -.015em;
+    overflow-wrap: anywhere;
+  }
+  .education-label .education-short-org, .education-period {
+    font-size: .75rem;
+    line-height: 1.25;
+    letter-spacing: normal;
+  }
+  .education-track {
+    height: 24px;
+    border-radius: 4px;
+    background-color: #f3f4f4;
+  }
+  .education-bar {
+    height: 14px;
+    border-radius: 3px;
+    box-shadow: none;
+  }
+  .mobility-highlight {
+    height: 16px;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 2px #7853aa;
+  }
+  .mobility-highlight::before {
+    inset: -1px -2px;
+  }
+}
+
+@keyframes bar-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .education-row.motion-enter .education-bar {
+    animation: bar-in .85s .12s var(--motion-ease) both;
+  }
+}
+
+@media print {
+  .education-chart {
+    break-inside: avoid;
+    box-shadow: none;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
