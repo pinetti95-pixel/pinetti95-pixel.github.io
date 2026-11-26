@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sito personale di Simone Pinetti: educazione, ricerca e tecnologie digitali.">
+<meta name="color-scheme" content="light">
+<title>Simone Pinetti | Educazione, ricerca e tecnologie</title>
+<style>
+:root{color-scheme:light;--ink:#172a38;--muted:#52636e;--accent:#245d60;--paper:#f8f7f3;--line:#d8dfdf}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:1rem/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:1080px;margin:auto;padding:0 clamp(22px,6vw,80px)}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:22px}
+.brand{font-weight:700;letter-spacing:-.03em}
+.lang{font:inherit;color:var(--accent);border:1px solid var(--accent);background:transparent;padding:.35rem .8rem;border-radius:4px;cursor:pointer}
+.lang:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+main{min-height:75vh}
+.hero{padding-block:clamp(70px,13vw,150px) clamp(50px,9vw,100px)}
+.eyebrow{font-size:.77rem;letter-spacing:.15em;font-weight:700;text-transform:uppercase;color:var(--accent)}
+h1{font-family:Georgia,serif;font-size:clamp(3rem,8vw,6.2rem);font-weight:400;line-height:1.04;letter-spacing:-.045em;margin:.32em 0}
+.lead{font-size:clamp(1.15rem,2.4vw,1.55rem);max-width:690px;color:var(--muted)}
+.status{border-top:1px solid var(--line);padding-block:24px 60px;max-width:690px}
+.status h2{font-size:1.1rem;margin:0 0 .45rem}
+.status p{color:var(--muted);margin:0}
+footer{border-top:1px solid var(--line);font-size:.85rem;color:var(--muted);padding-block:20px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><span class="brand">Simone Pinetti</span><button type="button" class="lang" id="language" lang="en" aria-label="Switch to English">EN</button></div></header>
+<main class="wrap">
+<section class="hero" aria-labelledby="name">
+<p class="eyebrow" data-it="Educazione / Ricerca / Tecnologie digitali" data-en="Education / Research / Digital technologies">Educazione / Ricerca / Tecnologie digitali</p>
+<h1 id="name">Simone Pinetti</h1>
+<p class="lead" data-it="Uno spazio dedicato alla ricerca educativa, alle tecnologie digitali e all'inclusione." data-en="A space dedicated to educational research, digital technologies and inclusion.">Uno spazio dedicato alla ricerca educativa, alle tecnologie digitali e all'inclusione.</p>
+</section>
+<section class="status">
+<h2 data-it="Sito in costruzione" data-en="Website under construction">Sito in costruzione</h2>
+<p data-it="Il portfolio personale e accademico è in fase di sviluppo." data-en="The personal and academic portfolio is currently being developed.">Il portfolio personale e accademico è in fase di sviluppo.</p>
+</section>
+</main>
+<footer><div class="wrap">© 2026 Simone Pinetti</div></footer>
+<script>
+const button=document.getElementById('language');
+button.addEventListener('click',()=>{
+ const next=document.documentElement.lang==='it'?'en':'it';
+ document.documentElement.lang=next;
+ for(const node of document.querySelectorAll('[data-it][data-en]')) node.textContent=node.dataset[next];
+ button.textContent=next==='it'?'EN':'IT';
+ button.lang=next==='it'?'en':'it';
+ button.setAttribute('aria-label',next==='it'?'Switch to English':'Passa all’italiano');
+ document.title=next==='it'?'Simone Pinetti | Educazione, ricerca e tecnologie':'Simone Pinetti | Education, research and technology';
+});
+</script>
+</body>
+</html>
