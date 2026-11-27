@@ -333,7 +333,7 @@ main section[id] {
 }
 
 .nav-role {
-  justify-content: center;
+  justify-content: flex-start;
   gap: .22em;
   margin-top: -5px;
   font-size: .81rem;
@@ -661,6 +661,19 @@ main section[id] {
 
 .social-post {
   min-width: 0;
+}
+
+.news-board[data-masonry] {
+  grid-auto-rows: 1px;
+  row-gap: 0;
+}
+
+.hero h1 .honorific {
+  display: block;
+  margin-bottom: .35em;
+  font-size: .3em;
+  line-height: 1.2;
+  letter-spacing: -.015em;
 }
 
 .embed-slot iframe, .credential-frame iframe {

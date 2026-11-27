@@ -68,6 +68,38 @@ function initPosts() {
   });
 }
 
+
+function initPostLayout() {
+  const feed = document.getElementById('linkedin-feed');
+  const posts = [...feed.querySelectorAll('.social-post')];
+  if (!('ResizeObserver' in window) || !posts.length) return;
+
+  let pending = 0;
+  function arrange() {
+    pending = 0;
+    if (feed.hidden || !feed.clientWidth) return;
+    const columns = getComputedStyle(feed).gridTemplateColumns.split(' ').length;
+    const bottoms = Array(columns).fill(0);
+    for (const post of posts) {
+      const height = Math.ceil(post.getBoundingClientRect().height);
+      const column = bottoms.indexOf(Math.min(...bottoms));
+      post.style.gridColumn = String(column + 1);
+      post.style.gridRow = (bottoms[column] + 1) + ' / span ' + height;
+      bottoms[column] += height + 16;
+    }
+  }
+
+  function schedule() {
+    if (!pending) pending = requestAnimationFrame(arrange);
+  }
+
+  feed.dataset.masonry = '';
+  const observer = new ResizeObserver(schedule);
+  observer.observe(feed);
+  posts.forEach(post => observer.observe(post));
+  schedule();
+}
+
 function initRoles() {
   const words = ['Educator', 'Teacher', 'Pedagogist', 'Researcher'];
   const nodes = [...document.querySelectorAll('.role-changing')];
@@ -140,5 +172,6 @@ initPortrait();
 initNavigation(reducedMotion);
 initLanguages(initPlaces());
 initPosts();
+initPostLayout();
 initRoles();
 initReveals();
