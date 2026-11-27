@@ -27,16 +27,12 @@ main > .wrap {padding:16px 16px 0}
 .hero .lead {color:#c4d2d8;font-size:1.15rem;line-height:1.4}
 .hero-rule {width:44px;height:3px;background:#96e6ed}
 .hero .role-fixed {color:#ecf2ec}
-.hero .role-changing {color:#96e6ed}
-.hero .role-changing[data-role="Teacher"] {color:#f0b17d}
-.hero .role-changing[data-role="Pedagogist"] {color:#a9c8f1}
-.hero .role-changing[data-role="Researcher"] {color:#d7b9ed}
+.rotating-role .role-changing {color:#ce7138}
+.rotating-role .role-changing[data-role="Teacher"] {color:#c4a34e}
+.rotating-role .role-changing[data-role="Pedagogist"] {color:#a7453d}
+.rotating-role .role-changing[data-role="Researcher"] {color:#647f91}
 .hero-portrait {padding:5px;border:1px solid #c4d2d8;background:#20394d;border-radius:2px}
 .hero-portrait img {border-radius:0}
-.hero::after,#contact::after {
-  content:"";position:absolute;top:28px;right:30px;width:80px;height:19px;
-  background:linear-gradient(to bottom,#a7453d 0 3px,transparent 3px 5px,#ce7138 5px 8px,transparent 8px 10px,#c4a34e 10px 13px,transparent 13px 15px,#647f91 15px 18px);
-}
 .section {background:#f0f1e9}
 #about,#research,#teaching,#places,#contact {background:#182c40;color:#ecf2ec;--line:#617787}
 #research,#teaching {background:#20394d}
@@ -89,7 +85,6 @@ main > .wrap {padding:16px 16px 0}
 }
 @media (max-width:630px) {
   .section {padding:42px 16px 24px}
-  .hero::after,#contact::after {top:16px;right:18px;width:60px}
   .hero .hero-inner {padding-top:65px;padding-inline:18px}
   .hero .lead {font-size:1.05rem}
   .hero h1 {font-size:clamp(2.8rem,11vw,4.6rem)}
@@ -99,6 +94,5 @@ main > .wrap {padding:16px 16px 0}
 }
 @media print {
   .hero,.section,#about,#research,#teaching,#places,#contact {background:white;color:#253843;border:0;outline:0;box-shadow:none}
-  .hero::after,#contact::after {display:none}
   .project p,.teaching p {color:#253843}
 }
