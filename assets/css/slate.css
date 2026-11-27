@@ -1,0 +1,104 @@
+/* Slate console theme. Remove this stylesheet to restore the editorial design. */
+:root {
+  --ink: #253843;
+  --paper: #f0f1e9;
+  --line: #a5afad;
+  --slate: #182c40;
+  --slate-secondary: #20394d;
+  --cyan: #96e6ed;
+  --panel-gap: 16px;
+}
+body {background:#dde1db;color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.35}
+h1,h2 {line-height:1.08;letter-spacing:-.035em}
+main {background:#dde1db}
+.top {background:#f0f1e9;border-right:1px solid #a5afad;box-shadow:inset -7px 0 #dde1db}
+.brand {text-align:left;font-size:1.2rem}
+.nav a {border-radius:0}
+.nav a:hover,.nav a[aria-current="location"] {background:#182c40;color:#ecf2ec;border-left-color:#96e6ed}
+.language button {font-family:"Courier New",monospace}
+.language button[aria-pressed="true"] {border-bottom-color:#253843}
+.scroll-progress {background:#a5afad}
+#scroll-progress-fill {background:#20394d}
+main > .wrap {padding:16px 16px 0}
+.hero,.section {border:9px solid #f0f1e9;outline:1px solid #a5afad;outline-offset:-1px;border-radius:3px}
+.hero {background:#182c40;color:#ecf2ec;box-shadow:inset 0 0 0 8px #20394d}
+.hero-inner {padding-top:clamp(80px,11vh,130px)}
+.hero h1 {font-size:clamp(3.4rem,6.4vw,6.4rem);line-height:1.05}
+.hero .lead {color:#c4d2d8;font-size:1.15rem;line-height:1.4}
+.hero-rule {width:44px;height:3px;background:#96e6ed}
+.hero .role-fixed {color:#ecf2ec}
+.hero .role-changing {color:#96e6ed}
+.hero .role-changing[data-role="Teacher"] {color:#f0b17d}
+.hero .role-changing[data-role="Pedagogist"] {color:#a9c8f1}
+.hero .role-changing[data-role="Researcher"] {color:#d7b9ed}
+.hero-portrait {padding:5px;border:1px solid #c4d2d8;background:#20394d;border-radius:2px}
+.hero-portrait img {border-radius:0}
+.hero::after,#contact::after {
+  content:"";position:absolute;top:28px;right:30px;width:80px;height:19px;
+  background:linear-gradient(to bottom,#a7453d 0 3px,transparent 3px 5px,#ce7138 5px 8px,transparent 8px 10px,#c4a34e 10px 13px,transparent 13px 15px,#647f91 15px 18px);
+}
+.section {background:#f0f1e9}
+#about,#research,#teaching,#places,#contact {background:#182c40;color:#ecf2ec;--line:#617787}
+#research,#teaching {background:#20394d}
+#cv,#linkedin,#publications,#conferences,#posters,#badges,#blog {background:#f0f1e9}
+.section-head {margin-bottom:36px}
+.section-head::after {height:3px;width:42px;background:#9c8062}
+:is(#about,#research,#teaching,#places,#contact) .section-head::after {background:#96e6ed}
+.intro {line-height:1.4}
+.cols {gap:32px}
+#about .aside {background:#20394d;border:1px solid #617787;padding:22px}
+.aside h3 {font-family:"Courier New",monospace;font-weight:400;font-size:.85rem}
+.aside p {line-height:1.4;color:inherit}
+.panel-count,.date,.education-period {font-family:"Courier New",monospace}
+.panel-count {font-size:.75rem;letter-spacing:.06em}
+.panel-arrow {border-radius:2px;border-color:currentColor}
+.panel-next:hover .panel-arrow {background:#a5afad33}
+.panel-foot {color:inherit}
+.project p,.teaching p {color:#c4d2d8;font-size:1rem;line-height:1.4}
+.project h3,.teaching h3 {line-height:1.25}
+#research [data-project="monitor"] {--project-accent:#a9c8f1}
+#research [data-project="insieme"] {--project-accent:#9cdbbf}
+#research [data-project="vicini"] {--project-accent:#e9b8d1}
+#research [data-project="building-4-belonging"] {--project-accent:#d7b9ed}
+#research [data-project="media-education"] {--project-accent:#f0c58b}
+#research [data-project="spell"] {--project-accent:#f0ada4}
+#research [data-project="passion"] {--project-accent:#96e6ed}
+#research [data-project="smile"] {--project-accent:#c5c0f0}
+.publication p,.entry p {line-height:1.4}
+.education-chart {border-radius:3px;box-shadow:inset 0 1px 4px #25384312;background:#ecede5;border-color:#a5afad}
+.education-row,.education-legend {border-color:#bdc6c2}
+.education-track {background-color:#f0f1e9;border-radius:2px}
+.education-bar {border-radius:2px}
+.credential-frame,.embed-slot iframe {border-radius:3px}
+.contact {background:#20394d;border:1px solid #617787;border-left:3px solid #96e6ed}
+#journey-map {border:5px solid #f0f1e9}
+.map-controls button {color:#ecf2ec;border-color:#82979f}
+.map-controls button[aria-pressed="true"] {background:#96e6ed;color:#182c40;border-color:#96e6ed}
+.place-detail,.place-list,.place-list button {border-color:#617787}
+.place-list button {color:#ecf2ec}
+.place-list button[aria-pressed="true"] {background:#20394d;color:#96e6ed}
+.footer {background:#dde1db;line-height:1.4}
+:focus-visible {outline-color:#987248}
+:is(#home,#about,#research,#teaching,#places,#contact) :focus-visible {outline-color:#96e6ed}
+@media screen and (max-width:999px) {
+  :root {--panel-gap:8px}
+  .top {background:#f0f1e9;box-shadow:inset 0 -3px #dde1db;border-bottom-color:#a5afad}
+  main > .wrap {padding:8px 8px 0}
+  .hero,.section {border-width:5px}
+  .hero-inner {padding-top:72px}
+}
+@media (max-width:630px) {
+  .section {padding:42px 16px 24px}
+  .hero::after,#contact::after {top:16px;right:18px;width:60px}
+  .hero .hero-inner {padding-top:65px;padding-inline:18px}
+  .hero .lead {font-size:1.05rem}
+  .hero h1 {font-size:clamp(2.8rem,11vw,4.6rem)}
+  .hero .rotating-role {font-size:clamp(1.5rem,5.6vw,2rem)}
+  #about .aside {padding:18px}
+  .education-period {font-family:Arial,Helvetica,sans-serif}
+}
+@media print {
+  .hero,.section,#about,#research,#teaching,#places,#contact {background:white;color:#253843;border:0;outline:0;box-shadow:none}
+  .hero::after,#contact::after {display:none}
+  .project p,.teaching p {color:#253843}
+}
