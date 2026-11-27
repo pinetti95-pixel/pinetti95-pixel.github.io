@@ -697,6 +697,26 @@ main section[id] {
   height: 691px;
 }
 
+#linkedin-feed iframe[height="1072"] {
+  height: 1072px;
+}
+
+#linkedin-feed iframe[height="1639"] {
+  height: 1639px;
+}
+
+#linkedin-feed iframe[height="964"] {
+  height: 964px;
+}
+
+#linkedin-feed iframe[height="1075"] {
+  height: 1075px;
+}
+
+#linkedin-feed iframe[height="985"] {
+  height: 985px;
+}
+
 .linkedin-controls {
   display: flex;
   justify-content: flex-end;
