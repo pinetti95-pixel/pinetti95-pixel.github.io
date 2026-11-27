@@ -675,6 +675,28 @@ main section[id] {
   border-radius: 8px;
 }
 
+
+/* Preserve the heights supplied by LinkedIn for each original embed. */
+#linkedin-feed iframe[height="943"] {
+  height: 943px;
+}
+
+#linkedin-feed iframe[height="649"] {
+  height: 649px;
+}
+
+#linkedin-feed iframe[height="1300"] {
+  height: 1300px;
+}
+
+#linkedin-feed iframe[height="838"] {
+  height: 838px;
+}
+
+#linkedin-feed iframe[height="691"] {
+  height: 691px;
+}
+
 .linkedin-controls {
   display: flex;
   justify-content: flex-end;
